@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // For form data
 app.use(bodyParser.json()); // For JSON data (if your client sends JSON)
 app.use(router);
 app.use(express.static('public'));
-
-server.listen(3000, () => {
-  console.log('server listening on 3000');
+const port = process.env.port || 3000;
+server.listen(port, () => {
+  console.log('server listening on ', port);
 });
 module.exports = { app, router, io };
