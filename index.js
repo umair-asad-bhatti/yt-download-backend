@@ -43,6 +43,7 @@ app.post('/checkInfo', async (req, res) => {
     };
     res.status(200).json({ url, ...videoInfo });
   } catch (err) {
+    console.log(err)
     res.status(400).json({ message: 'Provide a valid youtube link' });
   }
 });
