@@ -3,4 +3,4 @@ node_modules
 db.sqlite
 temp.js
 package-lock.json
-pnpm-lock.json
+pnpm-lock.yaml
