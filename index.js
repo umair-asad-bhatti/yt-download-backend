@@ -9,11 +9,13 @@ const {
   validateRequestBody,
   validateAccessToken,
 } = require('./middleware/index');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger/index');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(validateRequestBody);
-
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //auth routes
 app.use('/auth', authRoutes);
 //protected tasks routes
