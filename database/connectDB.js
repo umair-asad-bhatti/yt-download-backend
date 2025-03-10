@@ -1,8 +1,13 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('tasks', 'postgres', '1234', {
+// const sequelize = new Sequelize('tasks', 'postgres', '1234', {
+//   host: 'localhost',
+//   dialect: 'postgres',
+// });
+const sequelize = new Sequelize({
   host: 'localhost',
-  dialect: 'postgres',
+  dialect: 'sqlite', // Use SQLite as the database dialect
+  storage: './db.sqlite',
 });
 
 const connectDB = async () => {
@@ -17,11 +22,5 @@ const connectDB = async () => {
 
 // Call the function and handle unexpected errors
 connectDB();
-
-// Catch unhandled promise rejections globally
-process.on('unhandledRejection', (reason) => {
-  console.error('❌ Unhandled Rejection:', reason);
-  process.exit(1);
-});
 
 module.exports = sequelize;

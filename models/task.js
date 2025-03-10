@@ -17,10 +17,14 @@ const tableFields = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  priority: {
+    type: DataTypes.ENUM('low', 'medium', 'high'),
+    default: 'medium',
+  },
 };
 //defining the relation
 const Task = seq.define('Task', tableFields);
 User.hasMany(Task);
 Task.belongsTo(User); // Add this line to establish the relationship properly
-Task.sync();
+// Task.sync();
 module.exports = Task;

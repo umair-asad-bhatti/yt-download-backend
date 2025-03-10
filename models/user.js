@@ -32,6 +32,6 @@ const tableFields = {
 const User = seq.define('User', tableFields);
 
 // Sync model with database
-User.sync();
+// User.sync();
 
 module.exports = User;

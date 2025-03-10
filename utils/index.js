@@ -9,7 +9,7 @@ const SECRET_REFRESH = process.env.REFRESH_TOKEN_SECRET; // Keep this secret (us
 // Function to generate Access Token
 const generateAccessToken = (user, secret) => {
   return jwt.sign({ id: user.id, email: user.email }, SECRET_ACCESS, {
-    expiresIn: '1h',
+    expiresIn: '3h',
   }); // Short expiry
 };
 

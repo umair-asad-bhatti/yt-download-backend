@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const TasksRoutes = require('./routes/tasks');
+const commentRoutes = require('./routes/comment');
 const sequelize = require('./database/connectDB');
 const {
   validateRequestBody,
@@ -15,7 +16,11 @@ app.use(validateRequestBody);
 
 //auth routes
 app.use('/auth', authRoutes);
-//protected tasks  routes
+//protected tasks routes
 app.use('/tasks', validateAccessToken, TasksRoutes);
-
+//proctected comments routes
+app.use('/comment/task', validateAccessToken, commentRoutes);
+sequelize.sync({ alter: true }).then(() => {
+  console.log('All tables have been sync');
+});
 app.listen(3000, () => console.log('server started at 3000'));
